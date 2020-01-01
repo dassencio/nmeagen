@@ -1,0 +1,534 @@
+/*******************************************************************************
+ *
+ *    GLOBAL VARIABLES
+ *
+ ******************************************************************************/
+
+:root {
+  --component-active-border-color: rgb(80, 80, 80);
+  --component-default-border-color: rgb(170, 170, 170);
+  --component-default-text-color: rgb(45, 45, 45);
+  --component-disabled-border-color: rgb(200, 200, 200);
+  --component-disabled-text-color: rgb(125, 125, 125);
+  --component-focus-hover-border-color: rgb(140, 140, 140);
+  --gray-component-active-background-color: rgb(220, 220, 220);
+  --gray-component-default-background-color: rgb(245, 245, 245);
+  --gray-component-disabled-background-color: rgb(250, 250, 250);
+  --gray-component-focus-hover-background-color: rgb(235, 235, 235);
+  --search-box-height: 42px;
+  --search-box-max-width: calc(100vw - 355px);
+  --search-box-width: 400px;
+  --section-border-color: rgb(190, 190, 190);
+  --white-component-active-background-color: rgb(235, 235, 235);
+  --white-component-disabled-background-color: rgb(240, 240, 240);
+  --white-component-focus-hover-background-color: rgb(245, 245, 245);
+  --white-component-selected-background-color: palegreen;
+}
+
+/*******************************************************************************
+ *
+ *    GLOBAL STYLES
+ *
+ ******************************************************************************/
+
+* {
+  box-sizing: border-box;
+  color: var(--component-default-text-color);
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  margin: 0;
+  outline: none;
+  padding: 0;
+  text-align: left;
+}
+html,
+body {
+  background-color: black;
+  height: 100%;
+  width: 100%;
+}
+a {
+  color: rgb(0, 70, 241);
+  text-decoration: none;
+}
+a:focus,
+a:hover {
+  color: dodgerblue;
+  text-decoration: underline;
+}
+button {
+  align-items: center;
+  background-color: var(--gray-component-default-background-color);
+  border: 1px solid var(--component-default-border-color);
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  user-select: none;
+}
+button[disabled] {
+  background-color: var(--gray-component-disabled-background-color);
+  border: 1px solid var(--component-disabled-border-color);
+  cursor: default;
+}
+button:not([disabled]):focus,
+button:not([disabled]):hover {
+  background-color: var(--gray-component-focus-hover-background-color);
+  border: 1px solid var(--component-focus-hover-border-color);
+}
+button:not([disabled]):active {
+  background-color: var(--gray-component-active-background-color);
+  border: 1px solid var(--component-active-border-color);
+}
+button::-moz-focus-inner {
+  border: 0;
+}
+button[disabled] * {
+  opacity: 0.3;
+}
+input[type="text"] {
+  background-color: white;
+  border-radius: 0;
+  border: 1px solid var(--component-default-border-color);
+}
+input[type="text"][disabled] {
+  background-color: var(--white-component-disabled-background-color);
+  border: 1px solid var(--component-disabled-border-color);
+  color: var(--component-disabled-text-color);
+}
+input[type="text"]:not([disabled]):focus,
+input[type="text"]:not([disabled]):hover {
+  border: 1px solid var(--component-focus-hover-border-color);
+}
+input[type="text"].invalid-value {
+  background-color: pink;
+  border: 1px solid crimson;
+}
+p {
+  margin-top: 15px;
+  text-align: justify;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+td {
+  vertical-align: middle;
+}
+[unclickable] {
+  cursor: default;
+  pointer-events: none;
+  user-select: none;
+}
+
+/*******************************************************************************
+ *
+ *    MENU
+ *
+ ******************************************************************************/
+
+#menu {
+  background-color: white;
+  border-right: 1px solid var(--component-default-border-color);
+  float: left;
+  height: 100%;
+  overflow-y: auto;
+  padding: 0 10px;
+  width: 291px;
+}
+#menu > div {
+  padding: 18px 10px;
+}
+#menu > div:not(:last-child) {
+  border-bottom: 1px solid var(--section-border-color);
+}
+@media only screen and (max-width: 800px) {
+  #menu {
+    padding: 0 5px;
+    width: 257px;
+  }
+  #menu > div {
+    padding: 10px 5px;
+  }
+}
+#menu input[type="text"] {
+  padding: 4px;
+  width: 100%;
+}
+#menu th {
+  padding-right: 10px;
+  white-space: nowrap;
+}
+#menu tr:not(:first-child) > td,
+#menu tr:not(:first-child) > th {
+  padding-top: 12px;
+}
+#current-position td {
+  text-align: right;
+}
+#tools button {
+  background-color: white;
+  border-radius: 3px;
+  border: none;
+  justify-content: flex-start;
+  width: 100%;
+}
+#tools button:focus,
+#tools button:hover {
+  background-color: var(--white-component-focus-hover-background-color);
+}
+#tools button:active {
+  background: var(--white-component-active-background-color);
+}
+#tools button.selected {
+  background: var(--white-component-selected-background-color);
+}
+#tools button img {
+  height: 36px;
+  margin-left: 6px;
+  width: 36px;
+}
+#tools button span {
+  line-height: 47px;
+  padding-left: 15px;
+}
+#edit-point-box,
+#multi-point-line-box,
+#global-settings-box {
+  display: none;
+}
+#extra-tools {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#extra-tools button {
+  height: 36px;
+  width: 56px;
+}
+#extra-tools button img {
+  height: 24px;
+  width: 24px;
+}
+#file-tools button {
+  height: 35px;
+  text-align: center;
+  width: 100%;
+}
+#file-tools button:not(:first-child) {
+  margin-top: 10px;
+}
+#file-tools input[type="file"] {
+  display: none;
+}
+
+/*******************************************************************************
+ *
+ *    HELP AND STATUS POPUPS
+ *
+ ******************************************************************************/
+
+#help-popup,
+#status-popup {
+  background-color: white;
+  border-radius: 3px;
+  display: none;
+  left: 50%;
+  max-height: calc(100vh - 20px);
+  max-width: 640px;
+  overflow-y: auto;
+  padding: 25px 25px 0 25px;
+  position: fixed;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100vw - 120px);
+}
+/* Firefox ignores bottom padding (https://stackoverflow.com/q/29986977). */
+#help-popup > :last-child,
+#status-popup > :last-child {
+  padding-bottom: 25px;
+}
+.popup-footnote {
+  font-size: 12px;
+  margin-top: 20px;
+  opacity: 0.6;
+  text-align: center;
+}
+.popup-title {
+  border-bottom: 1px solid var(--section-border-color);
+  font-size: 20px;
+  padding-bottom: 5px;
+}
+
+/*******************************************************************************
+ *
+ *    MAP
+ *
+ ******************************************************************************/
+
+#map {
+  background-color: gainsboro;
+  height: 100%;
+}
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  border: 1px solid var(--component-default-border-color);
+  box-shadow: none;
+}
+.leaflet-popup-content {
+  margin: 15px;
+}
+.leaflet-popup-close-button {
+  display: none;
+}
+#close-point-info-popup {
+  color: var(--component-default-border-color);
+  cursor: pointer;
+  font-family: monospace;
+  font-size: 20px;
+  line-height: 20px;
+  position: absolute;
+  right: 5px;
+  top: 2px;
+  user-select: none;
+}
+#close-point-info-popup:hover,
+#close-point-info-popup:focus {
+  color: var(--component-focus-hover-border-color);
+}
+#close-point-info-popup:active {
+  color: var(--component-active-border-color);
+}
+table.point-info-popup td,
+table.point-info-popup th {
+  font-size: 12px;
+}
+table.point-info-popup td {
+  padding-left: 15px;
+}
+table.point-info-popup tr:not(:first-child) > td,
+table.point-info-popup tr:not(:first-child) > th {
+  padding-top: 10px;
+}
+.leaflet-popup-tip-container {
+  /* Make popup tip have a correct border. */
+  bottom: -19px !important;
+}
+
+/*******************************************************************************
+ *
+ *    SEARCH BOX
+ *
+ ******************************************************************************/
+
+.leaflet-control-search {
+  margin: 15px 0 0 15px !important;
+  max-width: var(--search-box-max-width);
+  width: var(--search-box-width);
+}
+@media only screen and (max-width: 800px) {
+  .leaflet-control-search {
+    margin: 10px 0 0 10px !important;
+  }
+}
+.leaflet-control-search .search-input {
+  border-radius: 0;
+  border: 1px solid var(--component-default-border-color);
+  height: var(--search-box-height);
+  margin: 0;
+  max-width: var(--search-box-max-width) !important;
+  padding: 10px calc(var(--search-box-height) + 2px) 10px 10px;
+  width: var(--search-box-width) !important;
+}
+.leaflet-control-search .search-cancel {
+  background: url(__NMEAGEN__CLEAR_SVG__) no-repeat;
+  height: calc(var(--search-box-height) - 2px);
+  margin: 0;
+  position: absolute;
+  right: 1px;
+  top: 1px;
+  visibility: visible;
+  width: calc(var(--search-box-height) - 2px);
+}
+.leaflet-control-search .search-button,
+.leaflet-control-search .search-cancel > span {
+  display: none;
+}
+.leaflet-control-search .search-cancel:focus,
+.leaflet-control-search .search-cancel:hover {
+  background-color: var(--white-component-focus-hover-background-color);
+}
+.leaflet-control-search .search-tooltip {
+  max-height: calc(100vh - 90px);
+  width: 100%;
+}
+.leaflet-control-search .search-tip {
+  background-color: white;
+  border-radius: 0;
+  border: 1px solid var(--section-border-color);
+  border-top-width: 0;
+  color: var(--component-default-text-color);
+  line-height: calc(var(--search-box-height) - 4px);
+  margin: 0;
+  overflow: hidden;
+  padding: 0 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.leaflet-control-search .search-tip:focus,
+.leaflet-control-search .search-tip:hover,
+.leaflet-control-search .search-tip-select {
+  background-color: var(--white-component-focus-hover-background-color);
+}
+.leaflet-control-search .search-tip:hover {
+  cursor: pointer;
+}
+.leaflet-control-search .search-tip:active {
+  background-color: var(--white-component-active-background-color);
+}
+
+/*******************************************************************************
+ *
+ *    ZOOM AND LAYER CONTROLS
+ *
+ ******************************************************************************/
+
+.leaflet-control-zoom,
+.leaflet-control-layers {
+  border-radius: 0 !important;
+  border: none !important;
+  margin: 15px 15px 0 0 !important;
+}
+@media only screen and (max-width: 800px) {
+  .leaflet-control-zoom,
+  .leaflet-control-layers {
+    margin: 10px 10px 0 0 !important;
+  }
+}
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+  border-radius: 0 !important;
+  border: 1px solid var(--component-default-border-color) !important;
+  box-sizing: content-box;
+  color: var(--component-default-text-color) !important;
+  font-weight: normal;
+  text-decoration: none !important;
+}
+/* By default, the "+" icon has no bottom border (only the "-" icon has it). */
+.leaflet-control-zoom-in {
+  border-bottom: none !important;
+}
+/* When the "+" icon is focused/hovered over, its bottom border is drawn. */
+.leaflet-control-zoom-in:not(.leaflet-disabled):focus,
+.leaflet-control-zoom-in:not(.leaflet-disabled):hover,
+.leaflet-control-zoom-out:not(.leaflet-disabled):focus,
+.leaflet-control-zoom-out:not(.leaflet-disabled):hover {
+  background-color: var(
+    --white-component-focus-hover-background-color
+  ) !important;
+  border: 1px solid var(--component-focus-hover-border-color) !important;
+}
+/*
+ * The :focus pseudoselector is necessary here to prevent the "+" icon from
+ * temporarily losing its bottom border during the transition to the maximum
+ * possible zoom level.
+ */
+.leaflet-control-zoom-in.leaflet-disabled:focus,
+.leaflet-control-zoom-in.leaflet-disabled:hover,
+.leaflet-control-zoom-out.leaflet-disabled:focus,
+.leaflet-control-zoom-out.leaflet-disabled:hover {
+  border: 1px solid var(--component-default-border-color) !important;
+}
+/* When the "+" icon is active, its bottom border is drawn. */
+.leaflet-control-zoom-in:not(.leaflet-disabled):active,
+.leaflet-control-zoom-out:not(.leaflet-disabled):active {
+  background-color: var(--white-component-active-background-color) !important;
+  border: 1px solid var(--component-active-border-color) !important;
+}
+/* Whenever the "+" icon has a bottom border, the "-" icon has no top border. */
+.leaflet-control-zoom-in:active + .leaflet-control-zoom-out,
+.leaflet-control-zoom-in:focus + .leaflet-control-zoom-out,
+.leaflet-control-zoom-in:hover + .leaflet-control-zoom-out {
+  border-top: none !important;
+}
+.leaflet-disabled {
+  background-color: var(--white-component-disabled-background-color) !important;
+  color: var(--component-disabled-text-color) !important;
+  user-select: none;
+}
+.leaflet-control-layers-toggle,
+.leaflet-control-layers-expanded {
+  border-radius: 0 !important;
+  border: 1px solid var(--component-default-border-color) !important;
+  box-sizing: content-box;
+  padding: 0;
+}
+.leaflet-control-layers-toggle:focus,
+.leaflet-control-layers-toggle:hover,
+.leaflet-control-layers-expanded:focus,
+.leaflet-control-layers-expanded:hover {
+  border: 1px solid var(--component-focus-hover-border-color) !important;
+}
+.leaflet-control-layers-toggle:active,
+.leaflet-control-layers-expanded:active {
+  border: 1px solid var(--component-active-border-color) !important;
+}
+.leaflet-control-layers-toggle {
+  background-image: url(__NMEAGEN__LAYERS_PNG__);
+}
+.leaflet-retina .leaflet-control-layers-toggle {
+  background-image: url(__NMEAGEN__LAYERS_2X_PNG__);
+}
+.leaflet-control-layers-list label {
+  display: block;
+}
+.leaflet-control-layers-list label:focus,
+.leaflet-control-layers-list label:hover {
+  background-color: var(--white-component-focus-hover-background-color);
+}
+.leaflet-control-layers-list label:active {
+  background-color: var(--white-component-active-background-color);
+}
+.leaflet-control-layers-list input[type="radio"] {
+  display: none;
+}
+.leaflet-control-layers-list input[type="radio"]:checked + span {
+  background-color: var(--white-component-selected-background-color);
+}
+.leaflet-control-layers-list span {
+  cursor: pointer;
+  display: block;
+  line-height: 24px;
+  padding: 4px 8px;
+  user-select: none;
+  width: 100%;
+}
+
+/*******************************************************************************
+*
+*    SMALL SCREEN WARNING
+*
+******************************************************************************/
+
+#small-screen-warning {
+  display: none;
+}
+@media only screen and (max-width: 500px) {
+  #small-screen-warning {
+    align-items: center;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    height: 100vh;
+    justify-content: center;
+    left: 0;
+    padding: 0 20px;
+    position: fixed;
+    text-align: center;
+    top: 0;
+    width: 100vw;
+    z-index: 9999;
+  }
+}

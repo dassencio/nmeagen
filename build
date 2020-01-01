@@ -1,0 +1,137 @@
+#!/usr/bin/env python3
+
+
+import argparse
+import base64
+import mimetypes
+import os
+import re
+import time
+
+import csscompressor
+import htmlmin
+import jsmin
+
+
+def generate_data_uri(path):
+    """Generates a data URI for a file.
+
+    Parameters
+    ----------
+    path : str
+        Path to a file.
+
+    Returns
+    -------
+    data_uri : str
+        File contents represented as a data URI.
+    """
+    mime_type, encoding = mimetypes.guess_type(path)
+    if mime_type == "image/svg+xml":
+        with open(path, "r") as svg_file:
+            icon_bytes = str.encode("".join(svg_file.read().splitlines()))
+    elif mime_type:
+        with open(path, "rb") as binary_file:
+            icon_bytes = binary_file.read()
+    else:
+        raise ValueError("{} has an unknown mime type".format(path))
+    file_base64 = base64.b64encode(icon_bytes)
+    return "data:{};base64,{}".format(mime_type, str(file_base64, "utf-8"))
+
+
+def tag_to_filename(tag):
+    """Converts a placeholder tag to the name of the file it represents.
+
+    Parameters
+    ----------
+    tag : str
+        Placeholder tag (e.g. "__NMEAGEN__JQUERY_JS__").
+
+    Returns
+    -------
+    filename : str
+        Name of file represented by placeholder tag (e.g. "jquery.js").
+    """
+    return ".".join(
+        tag.replace("__NMEAGEN__", "").replace("__", "").lower().rsplit("_", 1)
+    ).replace("_", "-")
+
+
+def generate_html(compress=True):
+    """Generates the HTML page for the NMEA Generator application.
+
+    Parameters
+    ----------
+    compress : bool (default: True)
+        True if the generated page should be compressed, False otherwise.
+
+    Returns
+    -------
+    html : str
+        HTML string representing the NMEA Generator as a stand-alone
+        page, i.e., a page which can be opened directly in a browser.
+    """
+    working_directory = os.getcwd()
+    os.chdir(os.path.dirname(__file__) + "/src")
+    html = "__NMEAGEN__MAIN_HTML__"
+
+    # Recursively replace all placeholder tags with the contents of the files
+    # they represent.
+    while True:
+        tags = re.findall(r"__NMEAGEN__\w*__", html)
+        if len(tags) == 0:
+            break
+        for tag in tags:
+            filename = tag_to_filename(tag)
+            if filename.endswith(".html"):
+                with open("html/" + filename) as html_file:
+                    text = html_file.read()
+            elif filename.endswith(".js"):
+                with open("js/" + filename) as js_file:
+                    text = (
+                        jsmin.jsmin(js_file.read())
+                        if compress
+                        else js_file.read()
+                    )
+            elif filename.endswith(".css"):
+                with open("css/" + filename) as css_file:
+                    text = (
+                        csscompressor.compress(css_file.read())
+                        if compress
+                        else css_file.read()
+                    )
+            elif filename.endswith(".woff"):
+                text = generate_data_uri("fonts/" + filename)
+            else:
+                text = generate_data_uri("images/" + filename)
+            html = html.replace(tag, text)
+
+    os.chdir(working_directory)
+    return htmlmin.minify(html) if compress else html
+
+
+if __name__ == "__main__":
+    start = time.time()
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "-d",
+        "--debug",
+        action="store_true",
+        default=False,
+        help="disable HTML/JavaScript/CSS compression (for debugging)",
+    )
+    parser.add_argument(
+        "-o",
+        "--output-file",
+        type=argparse.FileType("w"),
+        default="index.html",
+        help="output file (default: index.html)",
+    )
+    namespace = parser.parse_args()
+    namespace.output_file.write(generate_html(not namespace.debug))
+    end = time.time()
+    print(
+        "Generated '{0}' in {1:.2f} seconds.".format(
+            namespace.output_file.name, end - start
+        )
+    )

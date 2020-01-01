@@ -1,0 +1,195 @@
+<div id="menu">
+  <div id="current-position">
+    <table>
+      <tr>
+        <th>Cursor latitude:</th>
+        <td id="mouse-cursor-latitude">---</td>
+      </tr>
+      <tr>
+        <th>Cursor longitude:</th>
+        <td id="mouse-cursor-longitude">---</td>
+      </tr>
+      <tr>
+        <th>Number of points:</th>
+        <td id="num-points-in-path">0</td>
+      </tr>
+      <tr>
+        <th>Path length (m):</th>
+        <td id="total-path-length">0</td>
+      </tr>
+    </table>
+  </div>
+  <div id="tools">
+    <button id="add-point" class="selected">
+      <img src="__NMEAGEN__ADD_POINT_SVG__" alt="" height="36" width="36" />
+      <span>Add point</span>
+    </button>
+    <button id="delete-point">
+      <img src="__NMEAGEN__DELETE_POINT_SVG__" alt="" height="36" width="36" />
+      <span>Delete point</span>
+    </button>
+    <button id="move-point">
+      <img src="__NMEAGEN__MOVE_POINT_SVG__" alt="" height="36" width="36" />
+      <span>Move point</span>
+    </button>
+    <button id="edit-point">
+      <img src="__NMEAGEN__EDIT_POINT_SVG__" alt="" height="36" width="36" />
+      <span>Edit point</span>
+    </button>
+    <button id="point-info">
+      <img src="__NMEAGEN__POINT_INFO_SVG__" alt="" height="36" width="36" />
+      <span>Point information</span>
+    </button>
+    <button id="multi-point-line">
+      <img
+        src="__NMEAGEN__MULTI_POINT_LINE_SVG__"
+        alt=""
+        height="36"
+        width="36"
+      />
+      <span>Multi-point line</span>
+    </button>
+    <button id="global-settings">
+      <img
+        src="__NMEAGEN__GLOBAL_SETTINGS_SVG__"
+        alt=""
+        height="36"
+        width="36"
+      />
+      <span>Global settings</span>
+    </button>
+  </div>
+  <div id="edit-point-box">
+    <table>
+      <tr>
+        <th><label for="selected-point-latitude">Latitude:</label></th>
+        <td>
+          <input
+            id="selected-point-latitude"
+            name="selected-point-latitude"
+            type="text"
+            maxlength="14"
+            value="---"
+            disabled="disabled"
+          />
+        </td>
+      </tr>
+      <tr>
+        <th><label for="selected-point-longitude">Longitude:</label></th>
+        <td>
+          <input
+            id="selected-point-longitude"
+            name="selected-point-longitude"
+            type="text"
+            maxlength="14"
+            value="---"
+            disabled="disabled"
+          />
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div id="multi-point-line-box">
+    <table>
+      <tr>
+        <th>
+          <label for="multi-point-line-step-size"
+            >Dist. between points (m):</label
+          >
+        </th>
+        <td>
+          <input
+            id="multi-point-line-step-size"
+            name="multi-point-line-step-size"
+            type="text"
+            maxlength="10"
+            value="---"
+          />
+        </td>
+      </tr>
+      <tr>
+        <th>
+          <label for="multi-point-line-object-speed">Object speed (m/s):</label>
+        </th>
+        <td>
+          <input
+            id="multi-point-line-object-speed"
+            name="multi-point-line-object-speed"
+            type="text"
+            maxlength="10"
+            value="---"
+            disabled="disabled"
+          />
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div id="global-settings-box">
+    <table>
+      <tr>
+        <th><label for="gps-frequency">GPS frequency (Hz):</label></th>
+        <td>
+          <input
+            id="gps-frequency"
+            name="gps-frequency"
+            type="text"
+            maxlength="10"
+            value="---"
+          />
+        </td>
+      </tr>
+      <tr>
+        <th><label for="start-time">UTC start time:</label></th>
+        <td>
+          <input
+            id="start-time"
+            name="start-time"
+            type="text"
+            maxlength="14"
+            value="HH:MM:SS.SSS"
+          />
+        </td>
+      </tr>
+      <tr>
+        <th><label for="start-date">UTC start date:</label></th>
+        <td>
+          <input
+            id="start-date"
+            name="start-date"
+            type="text"
+            maxlength="12"
+            value="YYYY-MM-DD"
+          />
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div id="extra-tools">
+    <button type="button" id="undo" disabled="disabled">
+      <img src="__NMEAGEN__UNDO_SVG__" alt="" height="24" width="24" />
+    </button>
+    <button type="button" id="redo" disabled="disabled">
+      <img src="__NMEAGEN__REDO_SVG__" alt="" height="24" width="24" />
+    </button>
+    <button type="button" id="zoom-to-fit">
+      <img src="__NMEAGEN__ZOOM_TO_FIT_SVG__" alt="" height="24" width="24" />
+    </button>
+    <button type="button" id="help">
+      <img src="__NMEAGEN__HELP_SVG__" alt="" height="24" width="24" />
+    </button>
+  </div>
+  <div id="file-tools">
+    <button type="button" id="load-nmea-file">Load NMEA file</button>
+    <input type="file" id="load-nmea-file-button" />
+    <button type="button" id="generate-nmea-file">
+      Generate NMEA file
+    </button>
+    <button type="button" id="load-coordinates-file">
+      Load coordinates (CSV)
+    </button>
+    <input type="file" id="load-coordinates-file-button" />
+    <button type="button" id="generate-coordinates-file">
+      Download coordinates (CSV)
+    </button>
+  </div>
+</div>

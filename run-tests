@@ -1,0 +1,47 @@
+#!/usr/bin/env python3
+
+import argparse
+import asyncio
+import os
+import sys
+
+import pyppeteer
+
+
+async def run_tests(filename):
+    """Executes the functional tests for the NMEA Generator.
+
+    Parameters
+    ----------
+    filename : str
+        Name of HTML file containing the NMEA Generator.
+    """
+
+    async def check_result(result):
+        print(result.text)
+        if result.text.startswith("[FAIL]"):
+            sys.exit(1)
+
+    try:
+        browser = await pyppeteer.launch()
+        page = await browser.newPage()
+        await page.goto("file://" + os.path.abspath(filename))
+        page.on("console", check_result)
+        await page.evaluate("runTests()")
+        await browser.close()
+    except pyppeteer.errors.PageError:
+        print("Could not open file '{}'.".format(filename))
+        sys.exit(1)
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "-i",
+        "--input-file",
+        type=str,
+        default="index.html",
+        help="input HTML file",
+    )
+    input_file = parser.parse_args().input_file
+    asyncio.get_event_loop().run_until_complete(run_tests(input_file))

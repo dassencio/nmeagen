@@ -1,0 +1,156 @@
+<div id="help-popup">
+  <h1 class="popup-title">Help topics</h1>
+
+  <p class="help-topic"><a href="#">What is this tool?</a></p>
+  <p class="help-text">
+    NMEA Generator is an
+    <a href="https://github.com/dassencio/nmeagen">open-source</a> drawing tool
+    for generating GPS logs in
+    <a href="http://www.gpsinformation.org/dale/nmea.htm">NMEA</a> format. Its
+    primary purpose is to make it easy to draw a path representing a person
+    walking or driving around while carrying a GPS device which measures their
+    current position at regular time intervals (e.g. once per second). After the
+    path is drawn, its representation as a sequence of NMEA sentences can be
+    generated and downloaded as a text file.
+  </p>
+
+  <p class="help-topic"><a href="#">Adding single points</a></p>
+  <div class="help-text">
+    <p>
+      The "Add point" tool is selected by default when the NMEA Generator is
+      started. When you click on the map using this tool, a point is added to
+      your path at the location you clicked on.
+    </p>
+    <p>
+      A point represents a position measured using a GPS device being carried
+      around. The time elapsed between two consecutive points is always the same
+      and equal to one second by default, but this can be changed under "Global
+      settings".
+    </p>
+  </div>
+
+  <p class="help-topic"><a href="#">Deleting a point</a></p>
+  <p class="help-text">
+    To delete a point, select the "Delete point" tool and click on the point you
+    wish to delete.
+  </p>
+
+  <p class="help-topic">
+    <a href="#">Deleting all points (clearing the map)</a>
+  </p>
+  <p class="help-text">
+    To delete all points, simply reload the application. The map view will be
+    preserved, so you will not lose the location you are currently working on.
+  </p>
+
+  <p class="help-topic"><a href="#">Moving a point manually</a></p>
+  <p class="help-text">
+    The "Move point" tool can be used to manually move points around. To move a
+    point, click on it first to select it: the point will then start following
+    the mouse cursor. Clicking once again will release the point at its current
+    position.
+  </p>
+
+  <p class="help-topic">
+    <a href="#">
+      Setting latitude and longitude values for a point
+    </a>
+  </p>
+  <p class="help-text">
+    The "Edit point" tool allows you to directly set the latitude and longitude
+    values for a point. First, select a point, then you will be able to change
+    its latitude and longitude values on the menu (left side). Pressing the
+    "Enter" key will move the point to the new specified location. To release
+    the point, click anywhere on the map.
+  </p>
+
+  <p class="help-topic">
+    <a href="#">
+      Adding multiple points on a straight line
+    </a>
+  </p>
+  <div class="help-text">
+    <p>
+      With the "Multi-point line" tool, you can draw multiple points along a
+      line with the same distance from each other. When you click on the map,
+      all preview points will be added to your path.
+    </p>
+    <p>
+      Since the time elapsed between two consecutive points is always the same,
+      the "Multi-point line" tool represents motion along a straight line with
+      constant velocity. The distance between consecutive points can be changed
+      on the menu (left side), and the associated speed is shown right below it.
+    </p>
+  </div>
+
+  <p class="help-topic"><a href="#">Changing the GPS frequency</a></p>
+  <div class="help-text">
+    <p>
+      By default, the time elapsed between two consecutive points on the map is
+      one second. To change this, click on "Global settings" and modify the GPS
+      frequency value. This value defines how many positions are obtained per
+      second, so setting it to 10Hz means the time elapsed between two
+      consecutive points will be 100 milliseconds (0.1 seconds).
+    </p>
+    <p>
+      The GPS frequency is a global setting, so changing its value will affect
+      the associated speeds at all points. As an example, increasing the GPS
+      frequency by a factor of 10 means all speeds will be increased by a factor
+      of 10 as well.
+    </p>
+  </div>
+
+  <p class="help-topic"><a href="#">Generating and loading NMEA files</a></p>
+  <div class="help-text">
+    <p>
+      After drawing the desired path, you can generate a file containing a
+      sequence of NMEA (<a
+        href="http://www.gpsinformation.org/dale/nmea.htm#GGA"
+        >GGA</a
+      >, <a href="http://www.gpsinformation.org/dale/nmea.htm#GSA">GSA</a> and
+      <a href="http://www.gpsinformation.org/dale/nmea.htm#RMC">RMC</a>)
+      sentences representing the path drawn. To do that, click on the "Generate
+      NMEA file" button.
+    </p>
+    <p>
+      You can also load an NMEA file generated with this or another application
+      by clicking the "Load NMEA file" button. The path represented by this file
+      will then be drawn automatically on the map. The positions of the points
+      are extracted from the GGA sentences.
+    </p>
+  </div>
+
+  <p class="help-topic">
+    <a href="#">
+      Downloading and loading coordinate files
+    </a>
+  </p>
+  <div class="help-text">
+    <p>
+      After drawing the desired path, you can generate a file containing its
+      coordinates. The file will be in CSV format, with each line containing the
+      coordinates of a point in the path (one latitude value and one longitude
+      value separated by a comma). To do that, click on the "Download
+      coordinates (CSV)" button.
+    </p>
+    <p>
+      You can also load a CSV file containing coordinates represented in this
+      same format by clicking the "Load coordinates (CSV)" button. The path
+      represented by this file will then be drawn automatically on the map.
+    </p>
+  </div>
+
+  <p class="help-topic"><a href="#">Reporting bugs</a></p>
+  <p class="help-text">
+    To report a bug, please send an e-mail to
+    <a href="mailto:diego@assencio.com">diego@assencio.com</a>.
+  </p>
+
+  <p class="help-topic"><a href="#">Who created this marvelous tool?</a></p>
+  <p class="help-text">
+    The NMEA Generator has been created by
+    <a href="http://linkedin.com/in/diegoassencio">Diego Assencio</a>.
+  </p>
+
+  <p class="popup-footnote">Click outside this window to close it.</p>
+</div>
