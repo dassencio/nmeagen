@@ -524,14 +524,17 @@ function removeAllOrientedSegments() {
  * @param {L.LatLng} coordinates2 the TO vertex of the oriented segment.
  */
 function addPreviewOrientedSegment(coordinates1, coordinates2) {
+  // Draw the segment.
   const segment = L.polyline([coordinates1, coordinates2], previewSegmentStyle);
-  const segmentArrow = L.polylineDecorator(segment);
-  segmentArrow.setPatterns([previewSegmentArrowStyle]);
   segment.addTo(map);
   segment.bringToBack();
+  previewSegmentArray.push(segment);
+
+  // Draw the arrow which defines the segment's orientation.
+  const segmentArrow = L.polylineDecorator(segment);
+  segmentArrow.setPatterns([previewSegmentArrowStyle]);
   segmentArrow.addTo(map);
   segmentArrow.bringToBack();
-  previewSegmentArray.push(segment);
   previewSegmentArrowArray.push(segmentArrow);
 }
 
