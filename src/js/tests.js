@@ -667,8 +667,10 @@ function testLoadNmeaDataCornerCases() {
   failIfConditionIsFalse(
     Math.abs(startDate.getTime() - date.getTime()) <= 1000
   );
-  failIfConditionIsFalse($("#start-time").val() === stringUTCTime(startDate));
-  failIfConditionIsFalse($("#start-date").val() === stringUTCDate(startDate));
+  failIfConditionIsFalse(
+    $("#start-time").val() === timeToUtcTimeOfDay(startDate)
+  );
+  failIfConditionIsFalse($("#start-date").val() === timeToUtcDate(startDate));
 
   // Case #2: no RMC sentences, GGA sentences happen at the same day.
   nmeaData =
@@ -684,7 +686,7 @@ function testLoadNmeaDataCornerCases() {
   failIfConditionIsFalse(gpsFrequency === 10.0);
   failIfConditionIsFalse(startDate.getTime() === date.getTime());
   failIfConditionIsFalse($("#start-time").val() === "13:23:05.387");
-  failIfConditionIsFalse($("#start-date").val() === stringUTCDate(startDate));
+  failIfConditionIsFalse($("#start-date").val() === timeToUtcDate(startDate));
 
   // Case #3: no RMC sentences, GGA sentences happen at different days.
   nmeaData =
@@ -700,7 +702,7 @@ function testLoadNmeaDataCornerCases() {
   failIfConditionIsFalse(gpsFrequency === 2.5);
   failIfConditionIsFalse(startDate.getTime() === date.getTime());
   failIfConditionIsFalse($("#start-time").val() === "23:59:59.800");
-  failIfConditionIsFalse($("#start-date").val() === stringUTCDate(startDate));
+  failIfConditionIsFalse($("#start-date").val() === timeToUtcDate(startDate));
 
   // Case #4: no GGA sentences, but RMC sentence present.
   nmeaData = "$GPRMC,140355.726,A,5231.794,N,01323.334,E,,,051216,000.0,W*76\n";

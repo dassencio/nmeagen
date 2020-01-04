@@ -566,22 +566,22 @@ function removeAllPreviewOrientedSegments() {
  ******************************************************************************/
 
 /**
- * Generates the UTC date as a string for a given time value.
+ * Generates the UTC date for a given time value.
  *
  * @param {Date} time Time value.
  * @return {String} UTC date for the given time in format "YYYY-MM-DD".
  */
-function stringUTCDate(time) {
+function timeToUtcDate(time) {
   return time.toISOString().match(/\d{4}-\d{2}-\d{2}/)[0];
 }
 
 /**
- * Generates the UTC time-of-day as a string for a given time value.
+ * Generates the UTC time-of-day for a given time value.
  *
  * @param {Date} time Time value.
  * @return {String} UTC date for the given time in format "HH:MM:SS.SSS".
  */
-function stringUTCTime(time) {
+function timeToUtcTimeOfDay(time) {
   return time.toISOString().match(/\d{2}:\d{2}:\d{2}\.\d{3}/)[0];
 }
 
@@ -783,8 +783,8 @@ function setMultiPointLineStepSize(newMultiPointLineStepSize) {
  */
 function setStartDate(newStartDate) {
   startDate = newStartDate;
-  $("#start-time").val(stringUTCTime(startDate));
-  $("#start-date").val(stringUTCDate(startDate));
+  $("#start-time").val(timeToUtcTimeOfDay(startDate));
+  $("#start-date").val(timeToUtcDate(startDate));
 }
 
 /**
@@ -952,10 +952,10 @@ function showSelectedPointInfoPopup() {
         (distPrevPoint === null ? "---" : distPrevPoint.toFixed(2) + "m") +
         "</td></tr>" +
         "<tr><th>UTC time:</th><td>" +
-        stringUTCTime(pointDate) +
+        timeToUtcTimeOfDay(pointDate) +
         "</td></tr>" +
         "<tr><th>UCT date:</th><td>" +
-        stringUTCDate(pointDate) +
+        timeToUtcDate(pointDate) +
         "</td></tr>" +
         "</table>",
       { autoPan: true }
@@ -1131,7 +1131,7 @@ function determineStartDate(ggaTimes, rmcTimes, rmcDates, ggaFirst) {
   if (rmcTimes.length === 0) {
     addStatusPopupMessage(
       "Could not determine the start date (will use " +
-        stringUTCDate(newStartDate) +
+        timeToUtcDate(newStartDate) +
         ")"
     );
 
@@ -1146,12 +1146,12 @@ function determineStartDate(ggaTimes, rmcTimes, rmcDates, ggaFirst) {
       newStartDate.setUTCSeconds(0);
       newStartDate.setUTCMilliseconds(nmea.timeToMilliseconds(ggaTimes[0]));
       addStatusPopupMessage(
-        "Start time obtained: " + stringUTCTime(newStartDate)
+        "Start time obtained: " + timeToUtcTimeOfDay(newStartDate)
       );
     } else {
       addStatusPopupMessage(
         "Could not determine the start time (will use " +
-          stringUTCTime(newStartDate) +
+          timeToUtcTimeOfDay(newStartDate) +
           ")"
       );
     }
@@ -1182,10 +1182,10 @@ function determineStartDate(ggaTimes, rmcTimes, rmcDates, ggaFirst) {
       }
     }
     addStatusPopupMessage(
-      "Start date obtained: " + stringUTCDate(newStartDate)
+      "Start date obtained: " + timeToUtcDate(newStartDate)
     );
     addStatusPopupMessage(
-      "Start time obtained: " + stringUTCTime(newStartDate)
+      "Start time obtained: " + timeToUtcTimeOfDay(newStartDate)
     );
   }
   setStartDate(newStartDate);
