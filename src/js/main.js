@@ -159,7 +159,10 @@ let mapLayerControl = null;
  ******************************************************************************/
 
 /**
- * Writes a message to the console if the given condition is not true.
+ * Writes a message to the console if a given condition is not true.
+ *
+ * @param {Boolean} condition Evaluation of a condition.
+ * @param {String} message Message to be printed if the condition is false.
  */
 function expect(condition, message) {
   if (!condition) {
