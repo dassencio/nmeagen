@@ -539,7 +539,7 @@ function addPreviewOrientedSegment(coordinates1, coordinates2) {
 }
 
 /**
- * Hides an oriented preview segment from the map.
+ * Hides a preview oriented segment from the map.
  *
  * @param {Number} segmentIndex Segment index (position on previewSegmentArray).
  */
