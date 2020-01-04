@@ -734,7 +734,7 @@ function comparePaths(firstPath, secondPath) {
 function storeCurrentPathIfChanged() {
   const pathCoordinates = cloneCurrentPath();
 
-  // If the current path is the same as the last stored one, do nothing */
+  // If the current path is the same as the last stored one, do nothing.
   if (undoHistoryArray.length > 0) {
     const lastPathCoordinates = undoHistoryArray[undoHistoryArray.length - 1];
     if (comparePaths(pathCoordinates, lastPathCoordinates)) {
@@ -891,7 +891,7 @@ function unfadeAndEnableMenuAndMap() {
  */
 function showHelpPopup() {
   if (!$("#help-popup").is(":visible")) {
-    /* Hide any previously expanded help topic. */
+    // Hide any previously expanded help topic.
     $("#help-popup .help-text").each(function() {
       $(this).hide();
     });
