@@ -42,7 +42,7 @@ const normalSegmentArrowStyle = {
   })
 };
 
-// Styles for drawing preview points on the map.
+// Styles for drawing preview segments on the map.
 const previewSegmentStyle = { color: "darkgray", weight: 2 };
 const previewSegmentArrowStyle = {
   offset: "50%",
@@ -146,10 +146,10 @@ const undoHistoryArray = [];
 // Array with the path "undo" history for "redo" operations.
 const redoHistoryArray = [];
 
-// Map handler.
+// Map handle.
 let map = null;
 
-// Map layer control element.
+// Map layer control handle.
 let mapLayerControl = null;
 
 /*******************************************************************************
