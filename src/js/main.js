@@ -457,12 +457,15 @@ function setSelectedPointCoordinates(coordinates) {
 /**
  * Adds an oriented segment to the map.
  *
- * @param {L.LatLng} coordinates1 FROM vertex of the oriented segment.
- * @param {L.LatLng} coordinates2 TO vertex of the oriented segment.
+ * @param {L.LatLng} fromCoordinates FROM vertex of the oriented segment.
+ * @param {L.LatLng} toCoordinates TO vertex of the oriented segment.
  */
-function addOrientedSegment(coordinates1, coordinates2) {
+function addOrientedSegment(fromCoordinates, toCoordinates) {
   // Draw the segment.
-  const segment = L.polyline([coordinates1, coordinates2], normalSegmentStyle);
+  const segment = L.polyline(
+    [fromCoordinates, toCoordinates],
+    normalSegmentStyle
+  );
   segment.addTo(map);
   segment.bringToBack();
   segmentArray.push(segment);
@@ -520,12 +523,15 @@ function removeAllOrientedSegments() {
 /**
  * Adds a preview oriented segment to the map.
  *
- * @param {L.LatLng} coordinates1 the FROM vertex of the oriented segment.
- * @param {L.LatLng} coordinates2 the TO vertex of the oriented segment.
+ * @param {L.LatLng} fromCoordinates FROM vertex of the oriented segment.
+ * @param {L.LatLng} toCoordinates TO vertex of the oriented segment.
  */
-function addPreviewOrientedSegment(coordinates1, coordinates2) {
+function addPreviewOrientedSegment(fromCoordinates, toCoordinates) {
   // Draw the segment.
-  const segment = L.polyline([coordinates1, coordinates2], previewSegmentStyle);
+  const segment = L.polyline(
+    [fromCoordinates, toCoordinates],
+    previewSegmentStyle
+  );
   segment.addTo(map);
   segment.bringToBack();
   previewSegmentArray.push(segment);
@@ -702,18 +708,18 @@ function rebuildPath(pathCoordinates) {
 /**
  * Compares two paths.
  *
- * @param {L.LatLng[]} pathCoordinates0 First path.
- * @param {L.LatLng[]} pathCoordinates1 Second path.
+ * @param {L.LatLng[]} firstPath First path.
+ * @param {L.LatLng[]} secondPath Second path.
  * @return {Boolean} True if the paths are equal, false otherwise.
  */
-function comparePaths(pathCoordinates0, pathCoordinates1) {
-  if (pathCoordinates0.length !== pathCoordinates1.length) {
+function comparePaths(firstPath, secondPath) {
+  if (firstPath.length !== secondPath.length) {
     return false;
   }
-  for (let i = 0; i < pathCoordinates0.length; ++i) {
+  for (let i = 0; i < firstPath.length; ++i) {
     if (
-      pathCoordinates0[i].lat !== pathCoordinates1[i].lat ||
-      pathCoordinates0[i].lng !== pathCoordinates1[i].lng
+      firstPath[i].lat !== secondPath[i].lat ||
+      firstPath[i].lng !== secondPath[i].lng
     ) {
       return false;
     }
