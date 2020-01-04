@@ -684,7 +684,7 @@ function cloneCurrentPath() {
 }
 
 /**
- * Exchange the currently drawn path with a new path.
+ * Exchanges the currently drawn path with a new path.
  *
  * @param {L.LatLng[]} pathCoordinates New path.
  */
