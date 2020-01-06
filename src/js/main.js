@@ -1015,8 +1015,8 @@ function redrawMultiPointLinePreviewPointsAndSegments(mouseCoordinates) {
   let steps = distance / multiPointLineStepSize;
 
   /*
-   * Latitude and longitude deltas between two consecutive GPS signals if the
-   * object is travelling on a straight line from prevCoordinates to
+   * Latitude and longitude deltas between two consecutive points if the
+   * object is travelling along a straight line from prevCoordinates to
    * mouseCoordinates.
    */
   const deltaLat = (mouseCoordinates.lat - prevCoordinates.lat) / steps;
