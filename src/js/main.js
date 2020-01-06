@@ -927,8 +927,8 @@ function updatePathStats() {
  */
 function showSelectedPointInfoPopup() {
   const coordinates = selectedPoint.getLatLng();
-  const latitude = coordinates.lat.toFixed(coordinatesFractionalDigits);
-  const longitude = coordinates.lng.toFixed(coordinatesFractionalDigits);
+  const latitude = coordinates.lat;
+  const longitude = coordinates.lng;
   const bearing = getPointBearing(selectedPointIndex);
   const speed = getSpeedAtPointMps(selectedPointIndex);
   const distNextPoint = getDistanceToNextPoint(selectedPointIndex);
@@ -940,10 +940,10 @@ function showSelectedPointInfoPopup() {
       "<div id='close-point-info-popup'>&times;</div>" +
         "<table class='point-info-popup'>" +
         "<tr><th>Latitude:</th><td>" +
-        latitude +
+        latitude.toFixed(coordinatesFractionalDigits) +
         "&deg;</td></tr>" +
         "<tr><th>Longitude:</th><td>" +
-        longitude +
+        longitude.toFixed(coordinatesFractionalDigits) +
         "&deg;</td></tr>" +
         "<tr><th>Bearing:</th><td>" +
         (bearing === null ? "---" : bearing.toFixed(2) + "&deg;") +
