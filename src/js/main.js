@@ -1400,7 +1400,7 @@ function onRedoButtonClick() {
     "onRedoLastUndoneActionClick(): no 'redo' actions available"
   );
 
-  // Add the current path to the "undo" array */
+  // Add the current path to the "undo" array.
   undoHistoryArray.push(redoHistoryArray.pop());
 
   // Restore the next path.
