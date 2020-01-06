@@ -1488,10 +1488,8 @@ function onGlobalSettingsTextInputFieldChange() {
  */
 function onGlobalSettingsTextInputFieldFocusOut() {
   $("#gps-frequency").val(gpsFrequency);
-  $("#gps-frequency").removeClass("invalid-value");
   setStartDate(startDate);
-  $("#start-time").removeClass("invalid-value");
-  $("#start-date").removeClass("invalid-value");
+  $("#gps-frequency, #start-time, #start-date").removeClass("invalid-value");
 }
 
 /**
