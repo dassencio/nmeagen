@@ -1284,16 +1284,6 @@ function setSelectedTool(newSelectedToolId) {
     return;
   }
 
-  // If we change the selected tool while moving a point, move the point back to
-  // its original position.
-  if (selectedToolId === ToolsEnum.MOVEPOINT && selectedPoint !== null) {
-    expect(
-      selectedPointOriginalCoordinates !== null,
-      "setSelectedTool(): selectedPointOriginalCoordinates === null"
-    );
-    setSelectedPointCoordinates(selectedPointOriginalCoordinates);
-  }
-
   // Shows the tool box for the new selected tool (if applicable).
   const showToolBox = function() {
     if (newSelectedToolId === ToolsEnum.EDITPOINT) {
