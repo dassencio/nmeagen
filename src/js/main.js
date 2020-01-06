@@ -1071,7 +1071,7 @@ function downloadFile(fileName, fileData) {
     )
     .attr("download", fileName);
   $("body").append(tmpDownloadLink);
-  document.getElementById("tmp-download-link").click();
+  tmpDownloadLink.get(0).click();
   tmpDownloadLink.remove();
 }
 
