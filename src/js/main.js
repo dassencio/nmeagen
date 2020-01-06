@@ -1126,7 +1126,7 @@ function determineGpsFrequency(timestamps) {
  * @param {String[]} ggaTimes Timestamps in the format "HHMMSS.SSS".
  * @param {String[]} rmcTimes Timestamps in the format "HHMMSS.SSS".
  * @param {String[]} rmcDates Dates in the format "DDMMYY".
- * @param {Boolean} ggaFirst true if the first sentence in the NMEA file is GGA.
+ * @param {Boolean} ggaFirst True if the first sentence in the NMEA file is GGA.
  * @note Only the first RMC and/or the first GGA sentence in the NMEA file is
  *       used. The time between two consecutive GPS position samples must not
  *       exceed an entire day.
