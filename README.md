@@ -3,8 +3,9 @@
 # Description
 
 NMEA Generator is a drawing tool for generating GPS logs in NMEA format. Being
-a web application consisting of a single HTML file, it can be opened inside a web browser and used directly without the need for any installation
-or configuration work.
+a web application consisting of a single HTML file, it can be opened in a web
+browser and used directly without the need for any installation or configuration
+work.
 
 This project contains the script (written in Python 3) used to generate the
 NMEA Generator application. An example of a publicly available instance of
@@ -51,13 +52,13 @@ name or location for the output HTML file, use the `-o` option:
 
 # Running the functional tests
 
-The NMEA Generator contains a set of functional tests which can be executed on
-a web browser or on a terminal.
+The NMEA Generator contains a set of functional tests which can be executed in
+a web browser or in a terminal.
 
-To execute the tests on a web browser, load the NMEA Generator and then
-invoke the `runTests()` function on the browser's console.
+To execute the tests in a web browser, load the NMEA Generator and then
+invoke the `runTests()` function in the browser's console.
 
-To execute the tests on a terminal, run:
+To execute the tests in a terminal, run:
 
     ./run-tests -i /path/to/nmeagen.html
 
