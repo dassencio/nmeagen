@@ -41,7 +41,7 @@ if __name__ == "__main__":
         "--input-file",
         type=str,
         default="index.html",
-        help="input HTML file",
+        help="input HTML file (default: index.html)",
     )
     input_file = parser.parse_args().input_file
     asyncio.get_event_loop().run_until_complete(run_tests(input_file))
