@@ -1696,10 +1696,10 @@ function generateCsvData() {
 }
 
 /**
- * Callback invoked when the "Load coordinates" button is clicked.
+ * Callback invoked when the "Load coordinates (CSV)" button is clicked.
  */
-function onLoadCoordinatesButtonClick() {
-  $("#select-coordinates-file").click();
+function onLoadCsvFileButtonClick() {
+  $("#select-csv-file").click();
 }
 
 /**
@@ -1761,9 +1761,9 @@ function onCsvFileSelected() {
 }
 
 /**
- * Callback invoked when the "Download coordinates" button is clicked.
+ * Callback invoked when the "Download coordinates (CSV)" button is clicked.
  */
-function onDownloadCoordinatesButtonClick() {
+function onGenerateCsvFileButtonClick() {
   downloadFile("output.csv", generateCsvData());
 }
 
@@ -2240,9 +2240,9 @@ $(document).ready(function() {
   $("#load-nmea-file").on("click", onLoadNmeaFileButtonClick);
   $("#select-nmea-file").on("change", onNmeaFileSelected);
   $("#generate-nmea-file").on("click", onGenerateNmeaFileButtonClick);
-  $("#load-coordinates-file").on("click", onLoadCoordinatesButtonClick);
-  $("#select-coordinates-file").on("change", onCsvFileSelected);
-  $("#generate-coordinates-file").on("click", onDownloadCoordinatesButtonClick);
+  $("#load-csv-file").on("click", onLoadCsvFileButtonClick);
+  $("#select-csv-file").on("change", onCsvFileSelected);
+  $("#generate-csv-file").on("click", onGenerateCsvFileButtonClick);
 
   initializeMap();
   initializeToolSettings();
