@@ -57,14 +57,14 @@ function getRandomPointOnPath() {
 /**
  * Compares two pairs of coordinates.
  *
- * @param {L.LatLng} coordinates1 First pair of coordinates.
- * @param {L.LatLng} coordinates2 Second pair of coordinates.
+ * @param {L.LatLng} firstCoordinates First pair of coordinates.
+ * @param {L.LatLng} secondCoordinates Second pair of coordinates.
  * @return {Boolean} True if the coordinates are equal, false otherwise.
  */
-function areCoordinatesEqual(coordinates1, coordinates2) {
+function areCoordinatesEqual(firstCoordinates, secondCoordinates) {
   return (
-    coordinates1.lat === coordinates2.lat &&
-    coordinates1.lng === coordinates2.lng
+    firstCoordinates.lat === secondCoordinates.lat &&
+    firstCoordinates.lng === secondCoordinates.lng
   );
 }
 
