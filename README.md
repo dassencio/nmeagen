@@ -8,7 +8,7 @@ or configuration work.
 
 This project contains the script (written in Python 3) used to generate the
 NMEA Generator application. An example of a publicly available instance of
-this tool is available on [nmeagen.org](https://nmeagen.org).
+this tool can be found on [nmeagen.org](https://nmeagen.org).
 
 # License
 
@@ -51,10 +51,11 @@ name or location for the output HTML file, use the `-o` option:
 
 # Running the functional tests
 
-The NMEA Generator comes with a sequence of functional tests which can be executed on a web browser or on a terminal.
+The NMEA Generator contains a set of functional tests which can be executed on
+a web browser or on a terminal.
 
-To execute the tests in a browser, open the browser's console and invoke the
-`runTests()` function.
+To execute the tests on a web browser, load the NMEA Generator and then
+invoke the `runTests()` function on the browser's console.
 
 To execute the tests on a terminal, run:
 
