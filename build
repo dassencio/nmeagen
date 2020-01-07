@@ -100,8 +100,6 @@ def generate_html(compress=True):
                         if compress
                         else css_file.read()
                     )
-            elif filename.endswith(".woff"):
-                text = generate_data_uri("fonts/" + filename)
             else:
                 text = generate_data_uri("images/" + filename)
             html = html.replace(tag, text)
