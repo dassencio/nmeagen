@@ -1595,7 +1595,7 @@ function onMultiPointLineTextInputFieldFocusOut() {
  * Callback invoked when the "Load NMEA file" button is clicked.
  */
 function onLoadNmeaFileButtonClick() {
-  $("#load-nmea-file-button").click();
+  $("#select-nmea-file").click();
 }
 
 /**
@@ -1699,7 +1699,7 @@ function generateCsvData() {
  * Callback invoked when the "Load coordinates" button is clicked.
  */
 function onLoadCoordinatesButtonClick() {
-  $("#load-coordinates-file-button").click();
+  $("#select-coordinates-file").click();
 }
 
 /**
@@ -2238,10 +2238,10 @@ $(document).ready(function() {
 
   // File loading/generation event handlers.
   $("#load-nmea-file").on("click", onLoadNmeaFileButtonClick);
-  $("#load-nmea-file-button").on("change", onNmeaFileSelected);
+  $("#select-nmea-file").on("change", onNmeaFileSelected);
   $("#generate-nmea-file").on("click", onGenerateNmeaFileButtonClick);
   $("#load-coordinates-file").on("click", onLoadCoordinatesButtonClick);
-  $("#load-coordinates-file-button").on("change", onCsvFileSelected);
+  $("#select-coordinates-file").on("change", onCsvFileSelected);
   $("#generate-coordinates-file").on("click", onDownloadCoordinatesButtonClick);
 
   initializeMap();
