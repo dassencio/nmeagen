@@ -136,7 +136,7 @@ function tearDown() {
   rebuildPath([]);
   clearUndoRedoActions();
   lastMouseCoordinates = null;
-  initializeGlobalSettings();
+  initializeToolSettings();
 
   failIfConditionIsFalse(pointArray.length === 0);
   failIfConditionIsFalse(previewPointArray.length === 0);

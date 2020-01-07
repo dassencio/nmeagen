@@ -2170,9 +2170,9 @@ function initializeMap() {
 }
 
 /**
- * Initializes some global settings.
+ * Initializes all tool settings.
  */
-function initializeGlobalSettings() {
+function initializeToolSettings() {
   setStartDate(new Date());
   setGpsFrequency(1.0);
   setMultiPointLineStepSize(20.0);
@@ -2245,5 +2245,5 @@ $(document).ready(function() {
   $("#generate-coordinates-file").on("click", onDownloadCoordinatesButtonClick);
 
   initializeMap();
-  initializeGlobalSettings();
+  initializeToolSettings();
 });
