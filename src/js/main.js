@@ -1661,7 +1661,7 @@ function onNmeaFileDataLoaded(nmeaData, fileName) {
 }
 
 /**
- * Callback invoked when the user selects an NMEA file to be loaded.
+ * Callback invoked when an NMEA file is selected to be loaded.
  */
 function onNmeaFileSelected() {
   const reader = new FileReader();
@@ -1747,7 +1747,7 @@ function onCsvFileDataLoaded(csvData, fileName) {
 }
 
 /**
- * Callback invoked when the user selects a CSV file to be loaded.
+ * Callback invoked when a CSV file is selected to be loaded.
  */
 function onCsvFileSelected() {
   const reader = new FileReader();
@@ -1788,7 +1788,7 @@ function onMapControlComponentMouseMove(event) {
 }
 
 /**
- * Callback invoked when the user clicks on a point.
+ * Callback invoked when a point is clicked on.
  *
  * @param {Object} event Click event.
  */
@@ -1837,7 +1837,7 @@ function onPointClick(event) {
 }
 
 /**
- * Callback invoked when the user moves the mouse cursor over the map.
+ * Callback invoked when the mouse cursor moves over the map.
  *
  * @param {Object} event Mouse move event.
  */
@@ -1907,19 +1907,19 @@ function onMenuMouseEnter() {
 }
 
 /**
- * Callback invoked when the user clicks on a button from the tool menu.
+ * Callback invoked when any button from the tool menu is clicked.
  */
 function onToolButtonClick() {
   setSelectedTool("#" + $(this).prop("id"));
 }
 
 /**
- * Callback invoked when the user presses a keyboard key.
+ * Callback invoked when a keyboard key is pressed.
  *
  * @param {Object} event Keydown event.
  */
 function onDocumentKeyDown(event) {
-  // If the user presses the escape key...
+  // If the user pressed the escape key...
   if (event.keyCode === 27) {
     // If a point is selected, deselect it.
     if (selectedPoint !== null) {
@@ -1945,7 +1945,7 @@ function onDocumentKeyDown(event) {
 }
 
 /**
- * Callback invoked when a user click event reaches the document root.
+ * Callback invoked when a click event reaches the document root.
  */
 function onDocumentClick() {
   hideStatusPopup();
@@ -1953,7 +1953,7 @@ function onDocumentClick() {
 }
 
 /**
- * Callback invoked when the user clicks on a popup.
+ * Callback invoked when a popup is clicked on.
  *
  * @param {Object} event Click event.
  * @note This function is not invoked for clicks on point popups.
@@ -1963,7 +1963,7 @@ function onPopupClick(event) {
 }
 
 /**
- * Callback invoked when the user clicks on a topic on the help popup.
+ * Callback invoked when a topic on the help popup is clicked on.
  */
 function onHelpPopupItemClick() {
   const helpTextElement = $(this)
@@ -1982,7 +1982,7 @@ function onHelpPopupItemClick() {
 }
 
 /**
- * Callback invoked when the user clicks on the map.
+ * Callback invoked when the map is clicked on.
  *
  * @param {Object} event Click event.
  */
@@ -2039,7 +2039,7 @@ function onMapClick(event) {
 }
 
 /**
- * Callback invoked when the user stops moving the map.
+ * Callback invoked when the map stops moving.
  */
 function onMapMoveEnd() {
   sessionStorage.setItem("mapCenterLatitude", map.getCenter().lat);
@@ -2048,14 +2048,14 @@ function onMapMoveEnd() {
 }
 
 /**
- * Callback invoked when the user stops zooming the map.
+ * Callback invoked when the map stops zooming.
  */
 function onMapZoomEnd() {
   updateZoomButtons();
 }
 
 /**
- * Callback invoked when the user clicks on the map layer control toggle.
+ * Callback invoked when the map layer control toggle is clicked.
  */
 function onMapLayerControlToggleClick() {
   if ($(".leaflet-control-layers").attr("first-toggle") !== "no") {
@@ -2146,7 +2146,7 @@ function initializeMap() {
     .on("moveend", onMapMoveEnd)
     .on("zoomend", onMapZoomEnd);
 
-  // Map control components event handlers.
+  // Map control component event handlers.
   $(".leaflet-control-layers-toggle").on("click", onMapLayerControlToggleClick);
   $(
     [
