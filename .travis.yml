@@ -15,7 +15,7 @@ install:
 script:
   - ./build -o test.html
   - ./run-tests -i test.html
-  - html5validator --ignore="Property \"behavior\" doesn't exist." index.html
+  - html5validator --ignore="Property \"behavior\" doesn't exist." test.html
 notifications:
   email:
     recipients:
