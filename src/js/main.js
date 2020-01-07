@@ -585,7 +585,7 @@ function timeToUtcDate(time) {
  * Generates the UTC time-of-day for a given time value.
  *
  * @param {Date} time Time value.
- * @return {String} UTC date for the given time in format "HH:MM:SS.SSS".
+ * @return {String} UTC time-of-day for the given time in format "HH:MM:SS.SSS".
  */
 function timeToUtcTimeOfDay(time) {
   return time.toISOString().match(/\d{2}:\d{2}:\d{2}\.\d{3}/)[0];
