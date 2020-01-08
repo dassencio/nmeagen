@@ -7,9 +7,9 @@ a web application consisting of a single HTML file, it can be opened in a web
 browser and used directly without the need for any installation or configuration
 work.
 
-This project contains the script (written in Python 3) used to generate the
-NMEA Generator application. An example of a publicly available instance of
-this tool can be found on [nmeagen.org](https://nmeagen.org).
+This project contains the script (written in Python 3) used to build the
+NMEA Generator. An example of a publicly available instance of this tool can be
+found on [nmeagen.org](https://nmeagen.org).
 
 # License
 
