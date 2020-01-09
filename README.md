@@ -27,7 +27,7 @@ belonging to the following projects:
 - [nmea-0183](https://github.com/nherment/node-nmea): licensed under the
   [MIT license](https://github.com/nherment/node-nmea/blob/master/LICENSE).
 
-See the [`LICENSE`](https://github.com/dassencio/mapgen/tree/master/LICENSE)
+See the [`LICENSE`](https://github.com/dassencio/nmeagen/tree/master/LICENSE)
 file for more information.
 
 # Required modules
