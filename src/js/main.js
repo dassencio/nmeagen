@@ -80,10 +80,12 @@ const maxZoomLevel = 19;
 
 // Map tile provider.
 const tileOpenStreetMapStreets = L.tileLayer(
-  "https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png?lang=en",
+  "https://" +
+    ["a", "b", "c"][new Date() % 3] +
+    ".tile.openstreetmap.de/{z}/{x}/{y}.png",
   {
     attribution:
-      "&copy; <a href='https://wikimediafoundation.org/wiki/Maps_Terms_of_Use'>Wikimedia</a> © <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a>",
+      "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors (<a href='http://opendatacommons.org/licenses/odbl/'>ODbL</a>)",
     minZoom: minZoomLevel,
     maxZoom: maxZoomLevel
   }
