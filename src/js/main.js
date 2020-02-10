@@ -78,8 +78,8 @@ const numSatellites = 12;
 const minZoomLevel = 2;
 const maxZoomLevel = 19;
 
-// Map tile provider.
-const tileOpenStreetMapStreets = L.tileLayer(
+// Street map tile provider.
+const tileStreets = L.tileLayer(
   "https://" +
     ["a", "b", "c"][new Date() % 3] +
     ".tile.openstreetmap.de/{z}/{x}/{y}.png",
@@ -88,6 +88,22 @@ const tileOpenStreetMapStreets = L.tileLayer(
       "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap" +
       "</a> contributors (<a href='http://opendatacommons.org/licenses/odbl/'" +
       ">ODbL</a>)",
+    minZoom: minZoomLevel,
+    maxZoom: maxZoomLevel
+  }
+);
+
+// Topology map tile provider.
+const tileTopology = L.tileLayer(
+  "https://" +
+    ["a", "b", "c"][new Date() % 3] +
+    ".tile.opentopomap.org/{z}/{x}/{y}.png",
+  {
+    attribution:
+      "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap" +
+      "</a> contributors &copy; <a href='http://viewfinderpanoramas.org/'>" +
+      "SRTM</a> &copy; <a href='https://opentopomap.org/'>OpenTopoMap</a> (<" +
+      "a href='https://creativecommons.org/licenses/by-sa/3.0/'>CC-BY-SA</a>)",
     minZoom: minZoomLevel,
     maxZoom: maxZoomLevel
   }
@@ -106,8 +122,9 @@ const tileSatellite = L.tileLayer(
 
 // Human-readable names for the available map layers.
 const mapLayers = {
-  Map: tileOpenStreetMapStreets,
-  Satellite: tileEsriWorldImagery
+  Streets: tileStreets,
+  Topology: tileTopology,
+  Satellite: tileSatellite
 };
 
 /*******************************************************************************
@@ -2098,7 +2115,7 @@ function initializeMap() {
     zoomControl: false,
     zoom: mapZoom,
     center: mapCenter,
-    layers: [tileOpenStreetMapStreets]
+    layers: [tileStreets]
   });
 
   // Place the zoom +/- buttons on the top-right side of the map.
