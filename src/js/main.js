@@ -85,15 +85,18 @@ const tileOpenStreetMapStreets = L.tileLayer(
     ".tile.openstreetmap.de/{z}/{x}/{y}.png",
   {
     attribution:
-      "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors (<a href='http://opendatacommons.org/licenses/odbl/'>ODbL</a>)",
+      "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap" +
+      "</a> contributors (<a href='http://opendatacommons.org/licenses/odbl/'" +
+      ">ODbL</a>)",
     minZoom: minZoomLevel,
     maxZoom: maxZoomLevel
   }
 );
 
 // Satellite image tile provider.
-const tileEsriWorldImagery = L.tileLayer(
-  "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+const tileSatellite = L.tileLayer(
+  "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/" +
+    "MapServer/tile/{z}/{y}/{x}",
   {
     attribution: "&copy; <a href='https://www.esri.com/'>Esri</a>",
     minZoom: minZoomLevel,
