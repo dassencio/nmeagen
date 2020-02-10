@@ -76,7 +76,7 @@ const numSatellites = 12;
 
 // Minimum/maximum zoom levels on the map.
 const minZoomLevel = 2;
-const maxZoomLevel = 19;
+const maxZoomLevel = 22;
 
 // Street map tile provider.
 const tileStreets = L.tileLayer(
@@ -88,6 +88,7 @@ const tileStreets = L.tileLayer(
       "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap" +
       "</a> contributors (<a href='http://opendatacommons.org/licenses/odbl/'" +
       ">ODbL</a>)",
+    maxNativeZoom: 19,
     minZoom: minZoomLevel,
     maxZoom: maxZoomLevel
   }
@@ -104,6 +105,7 @@ const tileTopology = L.tileLayer(
       "</a> contributors &copy; <a href='http://viewfinderpanoramas.org/'>" +
       "SRTM</a> &copy; <a href='https://opentopomap.org/'>OpenTopoMap</a> (<" +
       "a href='https://creativecommons.org/licenses/by-sa/3.0/'>CC-BY-SA</a>)",
+    maxNativeZoom: 17,
     minZoom: minZoomLevel,
     maxZoom: maxZoomLevel
   }
@@ -115,6 +117,7 @@ const tileSatellite = L.tileLayer(
     "MapServer/tile/{z}/{y}/{x}",
   {
     attribution: "&copy; <a href='https://www.esri.com/'>Esri</a>",
+    maxNativeZoom: 19,
     minZoom: minZoomLevel,
     maxZoom: maxZoomLevel
   }

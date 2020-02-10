@@ -362,7 +362,7 @@ function testConfiguration() {
   failIfConditionIsFalse(numSatellites >= 0);
   failIfConditionIsFalse(numSatellites < 13);
   failIfConditionIsFalse(minZoomLevel > 0);
-  failIfConditionIsFalse(maxZoomLevel <= 20);
+  failIfConditionIsFalse(maxZoomLevel > minZoomLevel);
 }
 
 function testSelectTool() {
