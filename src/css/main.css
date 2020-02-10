@@ -315,6 +315,9 @@ table.point-info-popup tr:not(:first-child) > th {
   /* Make popup tip have a correct border. */
   bottom: -19px !important;
 }
+.leaflet-control-attribution a {
+  font-size: 11px;
+}
 
 /*******************************************************************************
  *
