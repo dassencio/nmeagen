@@ -116,7 +116,9 @@ const tileSatellite = L.tileLayer(
   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/" +
     "MapServer/tile/{z}/{y}/{x}",
   {
-    attribution: "&copy; <a href='https://www.esri.com/'>Esri</a>",
+    attribution:
+      "&copy; <a href='https://server.arcgisonline.com/arcgis/rest/services/" +
+      "World_Imagery/MapServer'>Esri et al.</a>",
     maxNativeZoom: 19,
     minZoom: minZoomLevel,
     maxZoom: maxZoomLevel
