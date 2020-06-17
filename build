@@ -28,7 +28,7 @@ def generate_data_uri(path):
     """
     mime_type, encoding = mimetypes.guess_type(path)
     if mime_type == "image/svg+xml":
-        with open(path, "r") as svg_file:
+        with open(path, "r", encoding="utf-8") as svg_file:
             icon_bytes = str.encode("".join(svg_file.read().splitlines()))
     elif mime_type:
         with open(path, "rb") as binary_file:
@@ -84,17 +84,17 @@ def generate_html(compress=True):
         for tag in tags:
             filename = tag_to_filename(tag)
             if filename.endswith(".html"):
-                with open("html/" + filename) as html_file:
+                with open("html/" + filename, encoding="utf-8") as html_file:
                     text = html_file.read()
             elif filename.endswith(".js"):
-                with open("js/" + filename) as js_file:
+                with open("js/" + filename, encoding="utf-8") as js_file:
                     text = (
                         jsmin.jsmin(js_file.read())
                         if compress
                         else js_file.read()
                     )
             elif filename.endswith(".css"):
-                with open("css/" + filename) as css_file:
+                with open("css/" + filename, encoding="utf-8") as css_file:
                     text = (
                         csscompressor.compress(css_file.read())
                         if compress
