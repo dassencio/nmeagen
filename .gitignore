@@ -110,3 +110,6 @@ jsconfig.json
 
 # Output HTML file
 index.html
+
+# Node.js packages
+node_modules/
