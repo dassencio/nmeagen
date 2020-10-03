@@ -1,4 +1,4 @@
-[![Build Status](https://api.travis-ci.com/dassencio/nmeagen.svg?branch=master)](https://travis-ci.com/dassencio/nmeagen)
+![Functional tests](https://github.com/dassencio/nmeagen/workflows/Functional%20tests/badge.svg)
 
 # Description
 
@@ -60,7 +60,8 @@ invoke the `runTests()` function in the browser's console.
 
 To execute the tests in a terminal, run:
 
-    ./run-tests -i /path/to/nmeagen.html
+    npm install puppeteer
+    ./run-tests /path/to/nmeagen.html
 
 # Contributors & contact information
 
