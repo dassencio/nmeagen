@@ -1,0 +1,40 @@
+name: Deployment
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  deploy-to-github-pages:
+    name: Deploy to GitHub Pages
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Build NMEA Generator
+      run: |
+        mkdir app
+        ./build -o app/index.html
+
+    - name: Deploy NMEA Generator to GitHub Pages
+      env:
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      uses: crazy-max/ghaction-github-pages@v2
+      with:
+        build_dir: app
+        commit_message: Deploy build from ${{github.sha}}
+        fqdn: www.nmeagen.org
+        target_branch: gh-pages

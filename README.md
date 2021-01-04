@@ -1,3 +1,4 @@
+![Deployment](https://github.com/dassencio/nmeagen/workflows/Deployment/badge.svg)
 ![Functional tests](https://github.com/dassencio/nmeagen/workflows/Functional%20tests/badge.svg)
 ![Static code analysis](https://github.com/dassencio/nmeagen/workflows/Static%20code%20analysis/badge.svg)
 
