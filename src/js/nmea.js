@@ -5,8 +5,8 @@ var nmea = {};
 var m_parserList = [];
 var m_encoderList = [];
 var m_errorHandler = null;
-var m_latitudePrecision	= 3;
-var m_longitudePrecision = 3;
+var m_latitudePrecision = 6;
+var m_longitudePrecision = 6;
 var m_hex = ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'];
 
 // =============================================
@@ -116,7 +116,7 @@ nmea.addEncoder = function(sentenceEncoder) {
 // input: latitude in decimal degrees
 // output: latitude in nmea format
 // ddmm.mmm
-// nmea.m_latitudePrecision = 3;
+// nmea.m_latitudePrecision = 6;
 nmea.encodeLatitude = function(lat) {
 	var d;
 	var m;
@@ -157,7 +157,7 @@ nmea.encodeLatitude = function(lat) {
 // input: longitude in decimal degrees
 // output: longitude in nmea format
 // dddmm.mmm
-// nmea.m_longitudePrecision = 3;
+// nmea.m_longitudePrecision = 6;
 nmea.encodeLongitude = function(lon) {
 	var d;
 	var m;
@@ -185,7 +185,7 @@ nmea.encodeLongitude = function(lon) {
 	f = lon - d;
 	// convert to fractional minutes and round up to the specified precision
 	m = (f * 60.0);
-	// minutes are always 6 characters = mm.mmm
+	// format the fixed point fractional minutes
 	t = m.toFixed(m_longitudePrecision);
 	if(m < 10) {
 		// add leading 0
