@@ -614,7 +614,7 @@ nmea.GgaEncoder = function(id) {
 /**
  RMC encoder object
 
- $GPRMC,hhmmss.ss,A,llll.ll,a,yyyyy.yy,a,x.x,x.x,ddmmyy,x.x,a*hh
+ $GPRMC,hhmmss.ss,A,llll.ll,a,yyyyy.yy,a,x.x,x.x,ddmmyy,x.x,a,a*hh
 
  RMC = Recommended Minimum Specific GPS/TRANSIT Data
  1   = UTC of position fix
@@ -628,7 +628,8 @@ nmea.GgaEncoder = function(id) {
  9   = UT date
  10  = Magnetic variation degrees (Easterly var. subtracts from true course)
  11  = E or W
- 12  = Checksum
+ 12  = A, D, E, M or N
+ 13  = Checksum
 
  input:
  {
@@ -639,6 +640,7 @@ nmea.GgaEncoder = function(id) {
 	speed     : decimal knots
 	course    : decimal degrees
 	variation : decimal magnetic variation (E is -)
+	mode ind  : Positioning system mode indicator
  }
  */
 nmea.RmcEncoder = function(id) {
@@ -646,7 +648,7 @@ nmea.RmcEncoder = function(id) {
 	this.encode = function(id, data) {
 		var a = [];
 		var rmc;
-		// $GPRMC,hhmmss.ss,A,llll.ll,a,yyyyy.yy,a,x.x,x.x,ddmmyy,x.x,a*hh
+		// $GPRMC,hhmmss.ss,A,llll.ll,a,yyyyy.yy,a,x.x,x.x,ddmmyy,x.x,a,a*hh
 
 		a.push('$' + id);
 		a.push(nmea.encodeTime(data.date));
@@ -657,6 +659,7 @@ nmea.RmcEncoder = function(id) {
 		a.push(nmea.encodeDegrees(data.course));
 		a.push(nmea.encodeDate(data.date));
 		a.push(nmea.encodeMagVar(data.variation));
+		a.push('A');
 
 		rmc = a.join();
 
