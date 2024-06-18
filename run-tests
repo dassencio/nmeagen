@@ -2,6 +2,7 @@
 
 const path = require('path');
 const puppeteer = require('puppeteer');
+const { setTimeout } = require('node:timers/promises');
 
 (async () => {
   const browser = await puppeteer.launch();
@@ -11,7 +12,7 @@ const puppeteer = require('puppeteer');
   // Open NMEA Generator inside a headless browser.
   try {
     await page.goto(`file:${path.join(__dirname, fileName)}`);
-    await page.waitForTimeout(1000);
+    await setTimeout(1000);
   } catch (error) {
     console.error(`Could not open file: '${fileName}'.`);
     process.exit(1);
