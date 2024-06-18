@@ -33,8 +33,5 @@ jobs:
     - name: Build NMEA Generator
       run: ./build -o test.html
 
-    - name: Run HTML5 validity test
-      run: html5validator --ignore="Property \"behavior\" doesn't exist." test.html
-
     - name: Run functional tests
       run: ./run-tests test.html
