@@ -36,5 +36,5 @@ jobs:
       with:
         build_dir: app
         commit_message: Deploy build from ${{github.sha}}
-        fqdn: www.nmeagen.org
+        fqdn: nmeagen.org
         target_branch: gh-pages
