@@ -625,7 +625,7 @@ function timeToUtcTimeOfDay(time) {
  * @return {Number} Input angle in radians.
  */
 function degreesToRadians(degrees) {
-  return degrees / 180.0 / Math.PI;
+  return Math.PI * degrees / 180.0;
 }
 
 /*******************************************************************************
